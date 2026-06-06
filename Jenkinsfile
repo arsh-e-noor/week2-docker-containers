@@ -8,7 +8,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
                 checkout scm
             }
@@ -16,11 +16,11 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG ./F2_docker_jenkins/notes-app'
             }
         }
 
-        stage('Docker Hub Login') {
+        stage('Docker Login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh 'echo $PASS | docker login -u $USER --password-stdin'
