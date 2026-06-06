@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG ./F2_docker_jenkins/notes-app'
+                sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG ./F2_docker_jenkins'
             }
         }
 
